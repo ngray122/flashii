@@ -1,0 +1,91 @@
+{% extends "material/base.html"%}
+{% block content%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <!--Import Google Icon Font-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!--Import materialize.css-->
+   <link type="text/css" rel="stylesheet" href="flask_app/static/css/materialize.css"  media="screen,projection"/>
+
+   <!--Let browser know website is optimized for mobile-->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dashboard</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Navbar goes here -->
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+            <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+            <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+            <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+          </ul>
+        </div>
+      </nav>
+
+    <!-- Page Layout here -->
+    <div class="row">
+
+      <div class="col s12 m4 l3"> <!-- Note that "m4 l3" was added -->
+        <!-- Grey navigation panel
+
+              This content will be:
+          3-columns-wide on large screens,
+          4-columns-wide on medium screens,
+          12-columns-wide on small screens  -->
+
+      </div>
+
+      <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
+        <!-- Teal page content
+
+              This content will be:
+          9-columns-wide on large screens,
+          8-columns-wide on medium screens,
+          12-columns-wide on small screens  -->
+
+      </div>
+
+    </div>
+
+
+      <a href="/logout">Logout</a>
+      <a href="/create/card">Create Card</a>
+      <a href="/create/deck">Create Deck</a>
+      <a href="/edit/decks_and_cards">Edit My Decks and Cards</a>
+      <a href="/view/decks_and_cards">View My Decks and Cards</a>
+      <br />
+      <br />
+      <h1>Welcome to the Dashboard {{session.first_name}}!!!</h1>
+
+      <table>
+        {% for single_recipe in recipes %}
+        <p>Recipe Name: {{ single_recipe.name }}</p>
+        <p>Under 30 minutes: {{single_recipe.under_30}}</p>
+        <p>
+          Actions: <a href="/show/{{single_recipe.id}}">view instructions</a>
+
+          {%if single_recipe.user.id == session['user_id'] %}
+          <a href="/edit/{{single_recipe.id}}/recipe">edit</a>
+          <a href="/delete/{{single_recipe.id}}">delete</a>
+          {%endif%}
+        </p>
+        <br />
+        <br />
+
+        {%endfor%}
+      </table>
+    </div>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+</html>
+{%endblock%}

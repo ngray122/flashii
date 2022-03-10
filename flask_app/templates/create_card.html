@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Card</title>
+</head>
+
+<body>
+    <h1>Add New Card</h1>
+    <br>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/create/deck">Create Deck</a>
+    <a href="/edit">Edit</a>
+    <a href="/view">My Cards</a>
+    <a href="/logout">Logout</a>
+    <br>
+
+
+    <form action="/create/card" method="POST">
+
+        <label for="question">Side 1 or Question:</label>
+        <input type="text img" name="question"></textarea>
+        <br>
+        <label for="answer">Side 2 or Answer:</label>
+        <input type="text img" name="answer"></textarea>
+        <br>
+        <input type="submit">
+
+
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+
+    {% for message in messages %}
+
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+</body>
+
+</html>

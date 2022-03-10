@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding:0;
+}
+
+.container {
+    margin: 0 auto;
+    width: 30%;
+    
+}
+
+#registration, #login {
+    margin: 20px;
+    background-color:rgb(102, 91, 91);
+    padding: 20px;
+    color:white;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
